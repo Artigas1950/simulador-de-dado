@@ -1,27 +1,35 @@
 console.log("Simulador de dado")
 
-let a = prompt("Ingrese cuantos dados quiere tirar del 0 al 4")
+let a = prompt("Ingrese cuantos dados quiere tirar del 1 al 4, ingrese 0 para salir")
 
 function azar()
 {
     var num = Math.random()
     var num2 = num * 6 ;
     var dado = Math.ceil(num2);
-    alert(dado)
+    return dado
 }
 
-if (a>4)
+while(a!=0)
 {
-    alert("numero incorrecto")
+    if (a>4)
+{
+    alert("numero incorrecto");
 }
 
 else if (a<=4)
 {
     for(let x = 1; x <= a; x++)
     {
-        azar()
+        let y = azar()
+        alert(`dado ${x}: ${y}`);
     }
 }
+a = prompt("Ingrese cuantos dados quiere tirar del 1 al 4, ingrese 0 para salir")
+}
+alert("Gracias por participar");
+
+
 
 
 
