@@ -1,6 +1,7 @@
 console.log("Simulador de dado")
 
 let a = prompt("Ingrese cuantos dados quiere tirar del 1 al 4, ingrese 0 para salir")
+const resultados = []
 
 function azar()
 {
@@ -23,11 +24,13 @@ else if (a<=4)
     {
         let y = azar()
         alert(`dado ${x}: ${y}`);
+        resultados.push(x);
     }
 }
 a = prompt("Ingrese cuantos dados quiere tirar del 1 al 4, ingrese 0 para salir")
 }
 alert("Gracias por participar");
+console.log(resultados)
 
 
 
