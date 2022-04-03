@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkkhaki;
+}
+
+.navBar img{
+    width: 10em;
+    margin: 4em;
+}
+
+.navBar h1{
+    color:firebrick;
+}
+
+.resultados{
+    background-color: khaki;
+}
+
+.resultados h3{
+    color: firebrick;
+}
