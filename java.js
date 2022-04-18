@@ -1,61 +1,86 @@
-console.log("Simulador de dado")
-
-let nombres = prompt("Ingrese su nombre:")
-let a = prompt("Ingrese cuantos dados quiere tirar del 1 al 4, ingrese 0 para salir");
-const resultados = [];
-
-
 class Jugador {
     constructor(nombre){
         this.nombre = nombre;
     }
 }
-const jugador1 = new Jugador(nombres)
-console.log(jugador1)
 
 class Dado {
     constructor(){}
-    azar()
-{
-    var num = Math.random()
-    var num2 = num * 6 ;
-    var dado = Math.ceil(num2);
-    return dado
-}
-}
-const dado1 = new Dado();
-console.log(dado1)
 
-while(a!=0)
-{
-    if (a>4)
-{
-    alert("numero incorrecto");
-}
-
-else if (a<=4)
-{
-    for(let x = 1; x <= a; x++)
-    {
-        let y = dado1.azar();
-        alert(`dado ${x}: ${y}`);
-        resultados.push(y);
+    azar() {
+        var num = Math.random()
+        var num2 = num * 6 ;
+        var dado = Math.ceil(num2);
+        return dado
     }
 }
-  
 
-a = prompt("Ingrese cuantos dados quiere tirar del 1 al 4, ingrese 0 para salir")
+
+// Inicializo jugador
+let jugador = new Jugador("");
+
+// Inicializo Dado
+let dado = new Dado();
+
+// Inicializa contador
+let cont = 0;
+
+// Obtengo contador de local storage en caso de existir
+if (localStorage.getItem('contador')) {
+    // Obtengo contador
+    let contLS = localStorage.getItem('contador');
+    let contNumber = JSON.parse(contLS);
+
+    cont = contNumber;
 }
-alert("Gracias por participar");
-console.log(resultados);
-
-const primerimpar = resultados.find(dado => dado % 2 !== 0);
-console.log(primerimpar);
-
-const pares = resultados.filter(dado => dado % 2 === 0);
-console.log(pares);
 
 
+const contador = document.getElementById('contador');
+contador.innerText = cont;
 
 
+// Boton Tirar Dados
+const btnTirarDados = document.getElementById('btn-tirar-dados');
+
+btnTirarDados.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const inputNombre = document.getElementById('nombre');
+    const inputCantDados = document.getElementById('cant-dados');
+
+    let nombre = inputNombre.value;
+    let cantDados = inputCantDados.value;
+
+    if (nombre == "" || cantDados < 1 || cantDados > 4) {
+        // Error
+        console.log('error al mandar el formulario');
+    } else {
+        // Correcto
+        jugador['nombre'] = nombre;
+
+        cont++;
+
+        // Guardo contador en el Local Storage
+        localStorage.setItem('contador', JSON.stringify(cont));
+
+        const contador = document.getElementById('contador');
+        contador.innerText = cont;
+
+        const listaDados = document.getElementById('lista-dados');
+        
+        if (cantDados == 1) {
+            // 1 Dado
+            listaDados.innerHTML = `Resultados: ${dado.azar()}`;
+        } else if (cantDados == 2) {
+            // 2 Dados
+            listaDados.innerHTML = `Resultados: ${dado.azar()}, ${dado.azar()}`;
+        } else if (cantDados == 3) {
+            // 3 Dados
+            listaDados.innerHTML = `Resultados: ${dado.azar()}, ${dado.azar()}, ${dado.azar()}`;
+        } else {
+            // 4 Dados
+            listaDados.innerHTML = `Resultados: ${dado.azar()}, ${dado.azar()}, ${dado.azar()}, ${dado.azar()}`;
+        }
+    } 
+});
 

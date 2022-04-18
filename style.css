@@ -31,3 +31,20 @@ ul li {
 .resultados h3{
     color: firebrick;
 }
+
+.formulario {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 200px;
+}
+
+.boton-tirar-dados {
+    margin-top: 1em;
+    padding: 6px;
+}
+
+.resultados-dados {
+    margin-top: 2rem;
+}

@@ -1,17 +1,40 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Simulador de dado</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="java.js"></script>
-    </head>
-    <body>
-        <ul class="navBar">
-            <li><h1>Dado Virtual</h1></li>
-            <li><img src="visuals/dado.png"></li>
-        </ul>
-        <div class="resultados">
-            <h3>Resultados</h3>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Dado</title>
+
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <ul class="navBar">
+        <li><h1>Dado Virtual</h1></li>
+        <li><img src="visuals/dado.png"/></li>
+    </ul>
+
+    <div class="resultados">
+        <h4 class="my-5">Contador: <span id="contador">0</span></h4>
+    </div>
+
+    <form class="formulario">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required autocomplete="off">
+
+        <label for="cant-dados">Cantidad de Dados</label>
+        <input type="number" id="cant-dados" name="cant-dados" required min="1" max="4" autocomplete="off">
+
+        <input type="submit" value="Tirar Dados" class="boton-tirar-dados" id="btn-tirar-dados">
+    </form>
+
+    <div class="resultados-dados">
+        <h4 id="lista-dados">Resultados:</h4>
+        <div class="dados">
+
         </div>
-    </body>
+    </div>
+
+    <script src="java.js"></script>
+</body>
 </html>
